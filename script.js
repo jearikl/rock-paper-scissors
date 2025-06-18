@@ -1,71 +1,53 @@
-//gets input from user
-//let answer = parseInt(prompt("Please enter the number you would like to FizzBuzz up to: "))
-// 
-// ;
-
 let humanScore = 0;
 let computerScore = 0;
 
-
- playGame()
- playGame()
- playGame()
- playGame()
- playGame()
-
-
-
-function getRandomNumber(){
-    return Math.random()
-}
-
-function getComputerChoice(){
- if (getRandomNumber() <= .3333) {
-    return "rock";
-} 
-    else if (getRandomNumber() > .6666) {
+function getComputerChoice() {
+    let rando = Math.floor(Math.random() * 3);
+    if (rando == 0) {
+        return "rock";
+    } else if (rando == 1) {
         return "scissors";
-    }
-        else {return "paper"}
-    
+    } else { return "paper" }
 };
-
-console.log("computer: " + getComputerChoice())
 
 function getHumanChoice(){
-    const input = prompt("rock, paper or scissors").toLowerCase;
-    if (input === "rock") {
-        return "rock";
-    } else if (input === "paper") {
-        return "paper";
-    } else if (input === "scissors") {
-        return "scissors";
-    } else {
-        return "Add a valid entry";
-    }
-};
-
-console.log("human: " + getHumanChoice());
-
-
-function playGame(){
+    const input = prompt("rock, paper or scissors");
+    return input;
+}
 
 function playRound(humanChoice, computerChoice) {
-    if (humanChoice.toLowerCase() == "rock" && computerChoice == "scissors" ||
-    humanChoice.toLowerCase() == "paper" && computerChoice == "rock" ||  
-    humanChoice.toLowerCase() == "scissors" && computerChoice == "paper") {
-humanScore++;
-console.log("you won that round!");}
+    humanChoice = getHumanChoice();
+    computerChoice = getComputerChoice();
+    if (humanChoice == "rock" && computerChoice == "scissors" ||
+    humanChoice == "paper" && computerChoice == "rock" ||  
+    humanChoice == "scissors" && computerChoice == "paper") {
+        humanScore++;
+console.log("whoopty doo " + humanChoice + " beats " + computerChoice + "\n" + "human: " +  humanScore + " computer: " + computerScore);
+}
 else if 
-(humanChoice.toLowerCase() == "scissors" && computerChoice == "rock" ||
-    humanChoice.toLowerCase() == "rock" && computerChoice == "paper" ||  
-    humanChoice.toLowerCase() == "paper" && computerChoice == "scissors") {
+(humanChoice == "scissors" && computerChoice == "rock" ||
+    humanChoice == "rock" && computerChoice == "paper" ||  
+    humanChoice == "paper" && computerChoice == "scissors") {
 computerScore++;
-console.log("hahaha you stupid bitch you lost")}
-else  {return "tie";}
+console.log("hahaha" + computerChoice + " beats " + humanChoice + "\n" + "human: " +  humanScore + " computer: " + computerScore)
+    }else {console.log("tie")}
 }
-}
-  
 
-  const humanChoice = getHumanChoice();
-  const computerChoice = getComputerChoice();
+function playGame(){
+    playRound(getHumanChoice, getComputerChoice)
+    playRound(getHumanChoice, getComputerChoice)
+    playRound(getHumanChoice, getComputerChoice)
+    playRound(getHumanChoice, getComputerChoice)
+    playRound(getHumanChoice, getComputerChoice)
+    console.log("you scored " + humanScore + " computer scored " + computerScore)
+    if (humanScore > computerScore) {
+        console.log("you win!")
+    }
+    else if (humanScore < computerScore) {
+        console.log("lol you lost") 
+    }
+    else {
+        console.log("tied!")
+    }
+}
+playGame();
